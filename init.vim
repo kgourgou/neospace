@@ -1,4 +1,5 @@
 "===================================="
+"
 "   CONTENTS
 "===================================="
 
@@ -144,6 +145,8 @@ Plug 'airblade/vim-rooter'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'arcticicestudio/nord-vim'
+
 " Git support
 Plug 'jreybert/vimagit'
 Plug 'airblade/vim-gitgutter'
@@ -159,6 +162,11 @@ Plug 'MattesGroeger/vim-bookmarks'
 
 " A theme based on Spacemacs
 Plug 'lukelarsen/neospace-theme'
+
+Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'terryma/vim-multiple-cursors'
+
 
 " Show needed names for creating color scheme
 Plug 'vim-scripts/SyntaxAttr.vim'
@@ -220,8 +228,8 @@ call plug#end()
 if (has("termguicolors"))
   set termguicolors
 endif
-set background=dark
-colorscheme neospace-theme
+set background=light
+colorscheme nord
 
 " Enable syntax highlighting
 syntax enable
@@ -298,10 +306,13 @@ nnoremap <leader><Esc> :noh<CR><CR>
 :nnoremap <leader>pf :GFiles<CR>
 
 " Fuzzy search with <SPACE> /
-:nnoremap <leader>/ :Ag<CR>
+:nnoremap <leader>/ :Rg<CR>
 
 " Show buffers with <leader> bb
 :nnoremap <leader>bb :ls<CR>:b
+
+" Go to previously edited buffer witb <leader> bj
+:nnoremap <leader>bj <C-^>
 
 " Delete active buffer with <space>bd
 :nnoremap <leader>bd :b#<bar>bd#<CR>
@@ -355,7 +366,7 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Paste from the 0 register with <SPACE>p
 :nnoremap <leader>pp "0p
 
-
+:autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
 
 
 
