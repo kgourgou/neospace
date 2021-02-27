@@ -36,10 +36,6 @@
 "       - emmet
 "       - vim-surround
 "       - vim-autopairs
-"       - vim-javascript
-"       - vim-jsx
-"       - vim-typescript
-"       - vim-graphql
 "   APPEARENCE
 "       - NeoVim Theme
 "       - Enable Syntax Highlighting
@@ -99,6 +95,10 @@
 "===================================="
 
 call plug#begin()
+
+Plug 'andreasvc/vim-256noir'
+
+Plug 'danilo-augusto/vim-afterglow'
 
 " General default setting improvements for VIM
 Plug 'tpope/vim-sensible'
@@ -165,6 +165,9 @@ Plug 'lukelarsen/neospace-theme'
 
 Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'Rigellute/shades-of-purple.vim'
+
+
 Plug 'terryma/vim-multiple-cursors'
 
 
@@ -202,17 +205,11 @@ Plug 'tpope/vim-surround'
 " Auto Pairs for finishing )}]
 Plug 'jiangmiao/auto-pairs'
 
-" Javascript Highlighting
-Plug 'pangloss/vim-javascript'
+" golden-ratio
+Plug 'roman/golden-ratio'
 
-" JSX Syntax Highlighting
-Plug 'mxw/vim-jsx'
 
-" Typescript Syntax Highlighting
-Plug 'leafgarland/typescript-vim'
-
-" GraphQL Syntax Highlighting
-Plug 'jparise/vim-graphql'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -229,7 +226,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=light
-colorscheme nord
+colorscheme shades_of_purple
 
 " Enable syntax highlighting
 syntax enable
@@ -324,7 +321,7 @@ nnoremap <leader><Esc> :noh<CR><CR>
 :nnoremap <leader>ff :Explore<CR>
 
 " Navigate windows with <SPACE>Number
-:nnoremap <leader>sp :vsp<CR>
+" :nnoremap <leader>sp :vsp<CR>
 
 " Navigate windows with <SPACE>Number
 :nnoremap <leader>1 1<C-w><C-w>
@@ -366,9 +363,10 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Paste from the 0 register with <SPACE>p
 :nnoremap <leader>pp "0p
 
-:autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
 
+:autocmd FileType python nnoremap <leader>y :0,$!yapf<C-r>
 
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 "===================================="
 "   PLUGIN CONFIG
@@ -380,7 +378,7 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Show color map names to help with syntax highlighting
 map <leader>-a :call SyntaxAttr()<CR>
 
-
+" :set ww+=h,l
 
 " Deoplete
 " --------------------
@@ -417,8 +415,9 @@ nnoremap <Leader>gs :Magit<CR>
 " --------------------
 
 " Airline Theme
-let g:airline_theme='neospace'
-
+" let g:airline_theme='neospace'
+let g:shades_of_purple_airline = 1
+let g:airline_theme='shades_of_purple'
 " Make airline faster
 let ttimeoutlen = 10
 
@@ -445,6 +444,7 @@ let g:ale_linters = {
 \   'html': [],
 \   'css': ['stylelint'],
 \   'javascript': ['eslint'],
+\   'python': ['flake8','pylint']
 \}
 
 let g:ale_open_list = 0
