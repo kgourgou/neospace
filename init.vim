@@ -96,7 +96,6 @@
 
 call plug#begin()
 
-Plug 'andreasvc/vim-256noir'
 
 Plug 'danilo-augusto/vim-afterglow'
 
@@ -296,7 +295,7 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 nnoremap <leader>o O<Esc>
 nnoremap <CR> o<Esc>
 
-" Clear search highlighting with <enter> key
+" Clear search highlighting with <Esc> key
 nnoremap <leader><Esc> :noh<CR><CR>
 
 " Search for files in your project using <SPACE> pf
@@ -363,10 +362,13 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Paste from the 0 register with <SPACE>p
 :nnoremap <leader>pp "0p
 
-
+" yapf for python files
 :autocmd FileType python nnoremap <leader>y :0,$!yapf<C-r>
 
-autocmd BufWritePre *.py :%s/\s\+$//e
+" Remove whitespace on save for python files
+:autocmd BufWritePre *.py :%s/\s\+$//e
+
+:nnoremap <leader>se :sp newfile<CR>
 
 "===================================="
 "   PLUGIN CONFIG
@@ -449,6 +451,7 @@ let g:ale_linters = {
 
 let g:ale_open_list = 0
 
+let g:ale_lint_on_save = 1
 
 
 " Sneak
@@ -473,10 +476,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Emmet
 " --------------------
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.config/nvim/.snippets_custom.json')), "\n"))
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+" let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.config/nvim/.snippets_custom.json')), "\n"))
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 " Ripgrep
