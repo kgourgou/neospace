@@ -210,6 +210,11 @@ Plug 'roman/golden-ratio'
 
 Plug 'mhinz/vim-startify'
 
+
+Plug 'psf/black', { 'branch': 'stable' }
+
+
+
 call plug#end()
 
 
@@ -226,6 +231,7 @@ if (has("termguicolors"))
 endif
 set background=light
 colorscheme shades_of_purple
+" colorscheme papercolor
 
 " Enable syntax highlighting
 syntax enable
@@ -320,7 +326,7 @@ nnoremap <leader><Esc> :noh<CR><CR>
 :nnoremap <leader>ff :Explore<CR>
 
 " Navigate windows with <SPACE>Number
-" :nnoremap <leader>sp :vsp<CR>
+:nnoremap <leader>sp :vsp<CR>
 
 " Navigate windows with <SPACE>Number
 :nnoremap <leader>1 1<C-w><C-w>
@@ -362,13 +368,28 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Paste from the 0 register with <SPACE>p
 :nnoremap <leader>pp "0p
 
-" yapf for python files
-:autocmd FileType python nnoremap <leader>y :0,$!yapf<C-r>
+" Run black with <leader>
+:nnoremap <leader>] :Black<CR>
+
+:autocmd BufWritePre *.py execute ':Black'
+
 
 " Remove whitespace on save for python files
 :autocmd BufWritePre *.py :%s/\s\+$//e
 
+
+" open a new file
 :nnoremap <leader>se :sp newfile<CR>
+
+" Comment / UnComment
+:nmap <leader>;; gcc
+
+
+" Split vertically
+:nnoremap <leader>w/ :vs<CR>
+
+" Split horizontally
+:nnoremap <leader>w- :sp<CR>
 
 "===================================="
 "   PLUGIN CONFIG
@@ -467,7 +488,7 @@ let g:sneak#use_ic_scs = 1
 " --------------------
 
 " Snippets config (start typing a snippets prefix, then <CTRL> e to expand it
-let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsExpandTrigger="tab"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
