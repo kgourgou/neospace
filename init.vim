@@ -179,24 +179,8 @@ Plug 'djoshea/vim-autoread'
 " Auto-format files
 Plug 'Chiel92/vim-autoformat'
 
-" Shell Commands in Vim
-" Plug 'tpope/vim-eunuch'
-
-" Path Navigator
-" Plug 'justinmk/vim-dirvish'
-
 " Move lines up and down
 Plug 'matze/vim-move'
-
-" Plug 'prettier/vim-prettier', {
-" 	\ 'do': 'yarn install',
-" 	\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-
-" Web API Vim
-Plug 'mattn/webapi-vim'
-
-" CSS/HTML Completion
-Plug 'mattn/emmet-vim'
 
 " Edit surrounding things ("<
 Plug 'tpope/vim-surround'
@@ -207,17 +191,12 @@ Plug 'jiangmiao/auto-pairs'
 " golden-ratio
 Plug 'roman/golden-ratio'
 
-
 Plug 'mhinz/vim-startify'
-
 
 Plug 'psf/black', { 'branch': 'stable' }
 
 
-
 call plug#end()
-
-
 
 
 
@@ -280,8 +259,6 @@ set clipboard+=unnamedplus
 
 " Copy file path to clipboard: https://stackoverflow.com/a/954336
 :nmap cp :let @+ = expand("%:p")
-
-
 
 
 
@@ -373,23 +350,23 @@ nnoremap <leader><Esc> :noh<CR><CR>
 
 :autocmd BufWritePre *.py execute ':Black'
 
-
 " Remove whitespace on save for python files
 :autocmd BufWritePre *.py :%s/\s\+$//e
 
-
-" open a new file
-:nnoremap <leader>se :sp newfile<CR>
-
 " Comment / UnComment
 :nmap <leader>;; gcc
-
 
 " Split vertically
 :nnoremap <leader>w/ :vs<CR>
 
 " Split horizontally
 :nnoremap <leader>w- :sp<CR>
+
+" Close window
+:nnoremap <leader>wd :q<CR>
+
+" Close all windows and vim
+:nnoremap <leader>qq :qa<CR>
 
 "===================================="
 "   PLUGIN CONFIG
