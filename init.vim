@@ -196,6 +196,9 @@ Plug 'mhinz/vim-startify'
 Plug 'psf/black', { 'branch': 'stable' }
 
 
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+
 call plug#end()
 
 
@@ -326,9 +329,6 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " This opens the previous quickfix window
 :nnoremap <leader>sl :colder<cr> :wincmd j<cr>
 
-" Close a buffer with <SPACE> wc
-:nnoremap <leader>wc :q<cr>
-
 " Maximize the window (size) with <SPACE> wm
 :nnoremap <leader>wm :wincmd o<cr>
 
@@ -367,6 +367,17 @@ nnoremap <leader><Esc> :noh<CR><CR>
 
 " Close all windows and vim
 :nnoremap <leader>qq :qa<CR>
+
+
+" Python specific abbreviations
+:autocmd Filetype python :iabbrev ipdb import ipdb; ipdb.set_trace()
+:autocmd Filetype python :iabbrev todo #TODO
+:autocmd Filetype python :iabbrev note #NOTE
+
+
+" Map C-\ C-n to ESC to escape the terminal insert mode
+:tnoremap <Esc> <C-\><C-n>
+
 
 "===================================="
 "   PLUGIN CONFIG
