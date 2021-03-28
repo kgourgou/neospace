@@ -41,6 +41,15 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 or see the [vim-plug page](https://github.com/junegunn/vim-plug) for more information.
 
 #### 3. Place the init.vim file & install plugins
+
+It's a better idea to use a symbolic link from this repo to `~/.config/nvim` so that things remain up-to-date. 
+
+
+
+-----------
+
+
+
 Navigate to `~/.config/nvim/` and place the `init.vim` file in this repo in there.
 
 Then run Neovim.
@@ -54,6 +63,9 @@ Install all the plugins.
 ```
 
 Restart Neovim and you are good to go.
+
+
+
 
 ### Neovim and Airline theme
 
