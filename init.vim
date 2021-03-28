@@ -141,7 +141,6 @@ Plug 'justinmk/vim-gtfo'
 Plug 'airblade/vim-rooter'
 
 " Snippets
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'arcticicestudio/nord-vim'
@@ -383,6 +382,11 @@ nnoremap <leader><Esc> :noh<CR><CR>
 "   PLUGIN CONFIG
 "===================================="
 
+" Black
+" ---------------
+let g:black_linelength = 79
+
+
 " SyntaxAttr
 " --------------------
 
@@ -475,10 +479,10 @@ let g:sneak#use_ic_scs = 1
 " UtilSnippets
 " --------------------
 
-" Snippets config (start typing a snippets prefix, then <CTRL> e to expand it
-let g:UltiSnipsExpandTrigger="tab"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" " Snippets config (start typing a snippets prefix, then <CTRL> e to expand it
+" let g:UltiSnipsExpandTrigger="tab"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 
