@@ -377,6 +377,11 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Map C-\ C-n to ESC to escape the terminal insert mode
 :tnoremap <Esc> <C-\><C-n>
 
+" Switch to insert mode when entering the terminal
+autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+
+
+
 
 "===================================="
 "   PLUGIN CONFIG
