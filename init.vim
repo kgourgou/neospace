@@ -166,7 +166,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'Rigellute/shades-of-purple.vim'
 
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 
 " Show needed names for creating color scheme
@@ -197,6 +197,7 @@ Plug 'psf/black', { 'branch': 'stable' }
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+Plug 'itchyny/calendar.vim' 
 
 call plug#end()
 
@@ -306,7 +307,6 @@ nnoremap <leader><Esc> :noh<CR><CR>
 
 " Navigate windows with <SPACE>Number
 :nnoremap <leader>sp :vsp<CR>
-
 " Navigate windows with <SPACE>Number
 :nnoremap <leader>1 1<C-w><C-w>
 :nnoremap <leader>2 2<C-w><C-w>
