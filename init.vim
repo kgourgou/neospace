@@ -197,7 +197,13 @@ Plug 'psf/black', { 'branch': 'stable' }
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
-Plug 'itchyny/calendar.vim' 
+Plug 'itchyny/calendar.vim'
+
+" tabular plugin is used to format tables
+Plug 'godlygeek/tabular'
+" JSON front matter highlight plugin
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -386,6 +392,24 @@ autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | en
 "===================================="
 "   PLUGIN CONFIG
 "===================================="
+
+
+" Markdown 
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+
+" do not use conceal feature, the implementation is not so good
+let g:vim_markdown_conceal = 0
+
+" disable math tex conceal feature
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format
+
 
 " Black
 " ---------------
