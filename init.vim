@@ -218,8 +218,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=light
-colorscheme shades_of_purple
+" colorscheme shades_of_purple
 " colorscheme papercolor
+colorscheme onehalflight
 
 " Enable syntax highlighting
 syntax enable
@@ -353,10 +354,20 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Run black with <leader>
 :nnoremap <leader>] :Black<CR>
 
+
+" Add today's date with <leader> + d
+:nnoremap <leader>d :r! date<CR>
+
 :autocmd BufWritePre *.py execute ':Black'
 
 " Remove whitespace on save for python files
 :autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Remove whitespace on save for markdown files
+:autocmd BufWritePre *.md :RemoveTrailingSpaces
+
+" 80 characters fold for markdown files
+:autocmd BufRead, BufNewFile *.md: setlocal textwidth=80
 
 " Comment / UnComment
 :nmap <leader>;; gcc
@@ -380,6 +391,8 @@ nnoremap <leader><Esc> :noh<CR><CR>
 :autocmd Filetype python :iabbrev note #NOTE
 
 
+
+
 " Map C-\ C-n to ESC to escape the terminal insert mode
 :tnoremap <Esc> <C-\><C-n>
 
@@ -394,7 +407,7 @@ autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | en
 "===================================="
 
 
-" Markdown 
+" Markdown
 " disable header folding
 let g:vim_markdown_folding_disabled = 1
 
@@ -461,7 +474,7 @@ nnoremap <Leader>gs :Magit<CR>
 " Airline Theme
 " let g:airline_theme='neospace'
 let g:shades_of_purple_airline = 1
-let g:airline_theme='shades_of_purple'
+let g:airline_theme='onehalfdark'
 " Make airline faster
 let ttimeoutlen = 10
 
