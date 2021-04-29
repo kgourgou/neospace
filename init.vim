@@ -205,6 +205,11 @@ Plug 'godlygeek/tabular'
 Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
 
+
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+
+
+
 call plug#end()
 
 
@@ -220,7 +225,9 @@ endif
 set background=light
 " colorscheme shades_of_purple
 " colorscheme papercolor
-colorscheme onehalflight
+colorscheme material
+
+let g:material_theme_style = "lighter" 
 
 " Enable syntax highlighting
 syntax enable
@@ -351,10 +358,6 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Paste from the 0 register with <SPACE>p
 :nnoremap <leader>pp "0p
 
-" Run black with <leader>
-:nnoremap <leader>] :Black<CR>
-
-
 " Add today's date with <leader> + d
 :nnoremap <leader>d :r! date<CR>
 
@@ -384,6 +387,9 @@ nnoremap <leader><Esc> :noh<CR><CR>
 " Close all windows and vim
 :nnoremap <leader>qq :qa<CR>
 
+" Open a tab with <leader> + t
+:nnoremap <leader>t :tabnew<CR>
+
 
 " Python specific abbreviations
 :autocmd Filetype python :iabbrev ipdb import ipdb; ipdb.set_trace()
@@ -391,7 +397,8 @@ nnoremap <leader><Esc> :noh<CR><CR>
 :autocmd Filetype python :iabbrev note #NOTE
 
 
-
+" Open a terminal with <leader> + ]
+:nnoremap <leader>] :terminal<CR>
 
 " Map C-\ C-n to ESC to escape the terminal insert mode
 :tnoremap <Esc> <C-\><C-n>
@@ -405,6 +412,20 @@ autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | en
 "===================================="
 "   PLUGIN CONFIG
 "===================================="
+
+" True Colors 
+" For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
+" Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
+" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 
 
 " Markdown
